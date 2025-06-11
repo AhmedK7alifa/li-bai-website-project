@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Li Bai Poetry | Web Design Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3a5a78;
+            --secondary: #1e3a57;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gold: #f1c40f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #dfe6e9 100%);
+            min-height: 100vh;
+            color: var(--dark);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .university-badge {
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin: 1rem 0;
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #555;
+            margin: 1.5rem 0;
+            font-weight: 300;
+        }
+        
+        .student-info {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+        }
+        
+        .info-item i {
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 1.1rem;
+            width: 25px;
+            text-align: center;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 3rem 0;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-image {
+            height: 350px;
+            background: url('img/background.jpg') center/cover;
+            position: relative;
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 58, 87, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .project-image:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .view-btn {
+            padding: 15px 30px;
+            background: white;
+            color: var(--secondary);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .view-btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            padding: 2.5rem;
+        }
+        
+        .project-description {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.1rem;
+        }
+        
+        .links-container {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .project-link.gitee {
+            background: #c71d23; /* Gitee's brand color */
+        }
+        
+        .project-link:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-link.gitee:hover {
+            background: #a61a1f; /* Darker shade for hover */
+        }
+        
+        .project-link i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            background: rgba(231, 76, 60, 0.1);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            text-align: center;
+        }
+        
+        .feature h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            font-size: 1.4rem;
+        }
+        
+        .feature p {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            color: #666;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-link {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .project-image {
+                height: 250px;
+            }
+            
+            .links-container {
+                flex-direction: column;
+            }
+            
+            .student-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="animated">
+            <div class="university-badge">
+                Web Design & Production Course Project
+            </div>
+            <h1>Li Bai Poetry Project</h1>
+            <p class="subtitle">A modern interactive tribute to China's legendary poet</p>
+            
+            <div class="student-info animated">
+                <div class="info-item">
+                    <i class="fas fa-user"></i>
+                    <div>
+                        <strong>Name:</strong> AHMED KHALIFA IDRISS ELAHJ<br>
+                        <span style="color: var(--accent);">叶鹏 (Ye Peng)</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-id-card"></i>
+                    <div><strong>Student ID:</strong> 23LX15511054</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-book"></i>
+                    <div><strong>Course:</strong> 网页设计与制作 (Web Design & Production)</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <div><strong>Instructor:</strong> 李林 (Prof. Li Lin)</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div><strong>Email:</strong> ahmedk7alifa@gmail.com</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="project-card animated">
+            <div class="project-image">
+                <div class="project-overlay">
+                    <a href="https://ahmedk7alifa.github.io/li-bai-website-project/" class="view-btn">Explore Live Demo</a>
+                </div>
+            </div>
+            <div class="project-content">
+                <h2>About The Project</h2>
+                <p class="project-description">
+                    This immersive digital experience celebrates the timeless poetry of Li Bai (李白), the immortal poet of the Tang Dynasty. 
+                    The project combines elegant modern web design with traditional Chinese aesthetics to create an interactive journey through 
+                    his most famous works. Featuring responsive design, smooth animations, and bilingual presentations, this website serves as 
+                    both an educational resource and an artistic tribute to China's poetic heritage.
+                </p>
+                
+                <div class="links-container">
+                    <a href="https://ahmedk7alifa.github.io/li-bai-website-project/" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                    <a href="https://github.com/ahmedk7alifa/li-bai-website-project" class="project-link">
+                        <i class="fab fa-github"></i> GitHub Code
+                    </a>
+                    <a href="https://gitee.com/AhmedK7alifa/li-bai-website" class="project-link gitee">
+                        <i class="fab fa-git-alt"></i> Gitee Code
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <h2 style="text-align: center; margin-bottom: 2rem; color: var(--secondary); font-size: 2rem;">Project Highlights</h2>
+        <div class="features">
+            <div class="feature animated" style="animation-delay: 0.1s;">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Cultural Design</h3>
+                <p>Blends traditional Chinese art motifs with contemporary web design principles for an authentic yet modern experience.</p>
+            </div>
+            <div class="feature animated" style="animation-delay: 0.2s;">
+                <i class="fas fa-language"></i>
+                <h3>Bilingual Content</h3>
+                <p>Presents original Chinese poems alongside carefully crafted English translations with cultural annotations.</p>
+            </div>
+            <div class="feature animated" style="animation-delay: 0.3s;">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Responsive Design</h3>
+                <p>Fully responsive layout that adapts beautifully to all devices from desktop to mobile.</p>
+            </div>
+        </div>
+        
+        <footer class="animated">
+            <div class="footer-links">
+                <a href="https://github.com/ahmedk7alifa" class="footer-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://gitee.com/AhmedK7alifa" class="footer-link">
+                    <i class="fab fa-git-alt"></i> Gitee
+                </a>
+                <a href="mailto:ahmedk7alifa@gmail.com" class="footer-link">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+            </div>
+            <p>© 2023 Li Bai Poetry Project | Developed by AHMED KHALIFA IDRISS ELAHJ (叶鹏)</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                Student ID: 23LX15511054 | Course: 网页设计与制作 | Instructor: 李林
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
