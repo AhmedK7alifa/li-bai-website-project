@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Li Bai - The Immortal Poet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Original CSS with Enhancements ===== */
+    :root {
+      --main-color: #b3001b;
+      --secondary-color: #f5c518;
+      --text-color: #222;
+      --bg-color: #fff;
+      --overlay: rgba(0, 0, 0, 0.55);
+      --font-title: 'Noto Serif SC', serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      font-family: var(--font-body);
+      scroll-behavior: smooth;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    /* Enhanced Hero Section with better text-image mixing */
+    .hero-section {
+      height: 100vh;
+      background: url('background.jpg') center/cover no-repeat;
+      position: relative;
+    }
+
+    .overlay {
+      background-color: var(--overlay);
+      width: 100%;
+      height: 100%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+
+    .logo {
+      font-size: 2em;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+
+    .nav-links li a:hover {
+      color: var(--secondary-color);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Improved main content layout */
+    .main-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      color: #fff;
+      gap: 30px;
+    }
+
+    .text-content {
+      flex: 1;
+      min-width: 300px;
+      max-width: 50%;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .text-content h1 {
+      font-size: 3.5em;
+      font-family: var(--font-title);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .text-content h1 .highlight {
+      color: var(--secondary-color);
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    .text-content h1 .highlight:hover {
+      transform: translateY(-3px);
+    }
+
+    .text-content p {
+      margin: 20px 0;
+      font-size: 1.2em;
+      line-height: 1.6;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .btn-container {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background-color: var(--main-color);
+      color: var(--secondary-color);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+      border: 2px solid transparent;
+    }
+
+    .btn:hover {
+      background-color: #8e0015;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    /* Enhanced image content */
+    .image-content {
+      flex: 1;
+      min-width: 300px;
+      max-width: 45%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .image-content img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      object-fit: cover;
+      transition: all 0.5s ease;
+      border: 3px solid rgba(245, 197, 24, 0.3);
+    }
+
+    .image-content img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      border-color: rgba(245, 197, 24, 0.6);
+    }
+
+    /* Bio section improvements */
+    .bio-section {
+      background-color: var(--bg-color);
+      padding: 80px 20px;
+      text-align: left;
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .life-title {
+      font-size: 2.8em;
+      color: var(--main-color);
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+      font-family: var(--font-title);
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .life-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--secondary-color);
+      border-radius: 2px;
+    }
+
+    .intro {
+      max-width: 850px;
+      margin: 0 auto 40px auto;
+      font-size: 1.15em;
+      line-height: 1.8;
+      text-align: justify;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .bold {
+      font-weight: bold;
+      color: #444;
+    }
+
+    .highlighted {
+      color: #a52a2a;
+      font-weight: bold;
+      background-color: rgba(245, 197, 24, 0.2);
+      padding: 0 5px;
+      border-radius: 3px;
+    }
+
+    /* Enhanced life stages */
+    .life-stage {
+      max-width: 850px;
+      margin: 30px auto;
+      padding: 25px 30px;
+      border-left: 5px solid var(--main-color);
+      background-color: #fdfdfd;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .life-stage::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(179, 0, 27, 0.03) 0%, rgba(245, 197, 24, 0.03) 100%);
+      z-index: 0;
+    }
+
+    .life-stage:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .life-stage h3 {
+      font-size: 1.5em;
+      color: var(--main-color);
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .life-stage p {
+      font-size: 1.05em;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .poem {
+      margin-top: 20px;
+      padding: 20px;
+      font-style: italic;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to right, #fefae0 0%, #f8f4d9 100%);
+      border-left: 4px solid var(--secondary-color);
+      border-radius: 8px;
+      line-height: 1.8;
+      font-size: 1.05em;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+
+    .poem:hover {
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
+      transform: translateX(5px);
+    }
+
+    /* Poems section enhancements */
+    .poems-section {
+      background-color: #f9f9f9;
+      padding: 80px 20px;
+    }
+
+    .poems-title {
+      font-size: 2.8em;
+      color: var(--main-color);
+      text-align: center;
+      margin-bottom: 50px;
+      font-family: var(--font-title);
+      position: relative;
+    }
+
+    .poems-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--secondary-color);
+      border-radius: 2px;
+    }
+
+    /* Tab system for poems */
+    .poem-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tab-btn {
+      background: var(--main-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .tab-btn:hover {
+      background: #8e0015;
+    }
+
+    .tab-btn.active {
+      background: var(--secondary-color);
+      color: var(--text-color);
+      font-weight: bold;
+    }
+
+    .poem-card {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      transition: all 0.4s ease;
+      position: relative;
+      display: none;
+    }
+
+    .poem-card.active {
+      display: block;
+    }
+
+    .poem-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(179, 0, 27, 0.03) 0%, rgba(245, 197, 24, 0.03) 100%);
+      z-index: 0;
+    }
+
+    .poem-header {
+      padding: 25px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--main-color) 0%, #8e0015 100%);
+      color: white;
+      position: relative;
+    }
+
+    .poem-header h3 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      font-family: var(--font-title);
+      position: relative;
+    }
+
+    .poem-image {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+      margin: 15px 0;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .poem-image:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .poem-content {
+      padding: 30px;
+      position: relative;
+    }
+
+    .poem-intro {
+      font-size: 1.1em;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      color: #555;
+      padding: 15px;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+    }
+
+    .poem-text {
+      margin-top: 20px;
+    }
+
+    .poem-text h4 {
+      font-size: 1.3em;
+      color: var(--main-color);
+      margin: 20px 0 10px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid var(--secondary-color);
+      display: inline-block;
+    }
+
+    .poem-translation {
+      font-style: italic;
+      padding: 20px;
+      background: linear-gradient(to right, #f5f5f5 0%, #f0f0f0 100%);
+      border-left: 4px solid var(--secondary-color);
+      margin: 20px 0;
+      line-height: 1.8;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+
+    .poem-translation:hover {
+      transform: translateX(5px);
+      box-shadow: inset 5px 0 10px rgba(0,0,0,0.05);
+    }
+
+    .poem-original {
+      padding: 20px;
+      background: linear-gradient(to right, #f0f0f0 0%, #e8e8e8 100%);
+      border-left: 4px solid #ccc;
+      margin: 20px 0;
+      line-height: 1.8;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+
+    .poem-original:hover {
+      transform: translateX(5px);
+      box-shadow: inset 5px 0 10px rgba(0,0,0,0.05);
+    }
+
+    .chinese-text {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+
+    /* Footer improvements */
+    footer {
+      background: linear-gradient(135deg, var(--main-color) 0%, #8e0015 100%);
+      color: #fff;
+      padding: 30px;
+      text-align: center;
+      font-size: 0.95em;
+    }
+
+    /* Scroll to top button */
+    #scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      opacity: 0;
+      transition: all 0.3s;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      background: var(--main-color);
+      color: var(--secondary-color);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+
+    #scroll-top:hover {
+      background: #8e0015;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    #scroll-top.visible {
+      opacity: 1;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .main-content {
+        flex-direction: column;
+      }
+      
+      .text-content, .image-content {
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+      
+      .btn-container {
+        justify-content: center;
+      }
+      
+      .poem-card {
+        margin-bottom: 40px;
+      }
+      
+      .poem-content {
+        padding: 20px;
+      }
+      
+      .life-title, .poems-title {
+        font-size: 2.2em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links {
+        gap: 10px;
+      }
+      
+      .text-content h1 {
+        font-size: 2.5em;
+      }
+      
+      .text-content p {
+        font-size: 1em;
+      }
+      
+      .life-stage, .poem-card {
+        padding: 20px;
+      }
+
+      .poem-tabs {
+        flex-direction: column;
+      }
+
+      .tab-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="overlay">
+      <nav>
+        <div class="logo">Chinese Poets</div>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="biography.html" target="_blank">Biography</a></li>
+          <li><a href="#poems">Poems</a></li>
+        </ul>
+      </nav>
+
+      <section class="main-content">
+        <div class="text-content">
+          <h1><span class="highlight">李白</span><br>Li Bai</h1>
+          <p>
+            Li Bai (701-762), considered one of China's greatest poets alongside Du Fu, lived during the Tang Dynasty's golden age of poetry. Known for his vivid imagery and deep emotion, Li Bai's work spans about 1,000 poems on themes like nature, friendship, and existential reflections. Celebrated for his spontaneous verse and exploration of Taoist ideals, Li Bai's poetry also deeply admires the natural world and ancient times, often challenging life's ordinary constraints.
+          </p>
+          <div class="btn-container">
+            <a href="biography.html" class="btn" id="main-cta" target="_blank">Life of Li Bai</a>
+            <a href="#poems" class="btn">His Poems</a>
+          </div>
+        </div>
+        <div class="image-content">
+          <img src="li_bai.jpeg" alt="Portrait of Li Bai">
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <!-- Poems Section -->
+  <main id="poems" class="poems-section">
+    <div class="container">
+      <h2 class="poems-title">Famous Poems of Li Bai</h2>
+      
+      <div class="poem-tabs">
+        <button class="tab-btn active" onclick="showPoem(0)">Quiet Night Thoughts</button>
+        <button class="tab-btn" onclick="showPoem(1)">The Hard Roads in Shu</button>
+        <button class="tab-btn" onclick="showPoem(2)">Drinking Alone Under the Moon</button>
+        <button class="tab-btn" onclick="showPoem(3)">Bring in the Wine</button>
+        <button class="tab-btn" onclick="showPoem(4)">Farewell to a Friend</button>
+      </div>
+      
+      <!-- Poem 1 -->
+      <article class="poem-card active" id="poem-0">
+        <header class="poem-header">
+          <h3>Quiet Night Thoughts</h3>
+          <img src="Quiet Night Thoughts.png" alt="Quiet Night Thoughts" class="poem-image">
+        </header>
+        <div class="poem-content">
+          <p class="poem-intro"><span class="highlighted">Introduction:</span> "Quiet Night Thoughts" by Li Bai first appeared in the year 726, in a collection titled The Complete Works of Li Po, translated by Sam Hamill. This short yet evocative poem captures the essence of homesickness and longing.</p>
+          
+          <section class="poem-text">
+            <h4>English Translation:</h4>
+            <blockquote class="poem-translation">
+              <p>A pool of moonlight on my bed in this late hour<br>
+              like a blanket of frost on the world.</p>
+              <p>I lift my eyes to a bright mountain moon.<br>
+              Remembering my home, I bow.</p>
+              <footer>- Li Po (translated by Sam Hamill)</footer>
+            </blockquote>
+            
+            <h4>Original Chinese:</h4>
+            <blockquote class="poem-original">
+              <p class="chinese-text">静夜思</p>
+              <p class="chinese-text">床前明月光，<br>
+              疑是地上霜。<br>
+              举头望明月，<br>
+              低头思故乡。</p>
+            </blockquote>
+          </section>
+        </div>
+      </article>
+      
+      <!-- Poem 2 -->
+      <article class="poem-card" id="poem-1">
+        <header class="poem-header">
+          <h3>The Hard Roads in Shu</h3>
+          <img src="The Hard Roads in Shu.webp" alt="The Hard Roads in Shu" class="poem-image">
+        </header>
+        <div class="poem-content">
+          <p class="poem-intro"><span class="highlighted">Introduction:</span> "Hard Roads in Shu" is an ancient Yuefu theme that literati throughout history have used to depict the treacherous paths to Sichuan, though their specific geographical references varied.</p>
+          
+          <section class="poem-text">
+            <h4>English Translation:</h4>
+            <blockquote class="poem-translation">
+              <p>Oh, but it is high and very dangerous!<br>
+              Such travelling is harder than scaling the blue sky.<br>
+              ...Until two rulers of this region<br>
+              Pushed their way through in the misty ages,<br>
+              Forty-eight thousand years had passed<br>
+              With nobody arriving across the Ch'in border.</p>
+            </blockquote>
+            
+            <h4>Original Chinese:</h4>
+            <blockquote class="poem-original">
+              <p class="chinese-text">蜀道难</p>
+              <p class="chinese-text">噫吁嚱，危乎高哉！<br>
+              蜀道之难，难于上青天！<br>
+              蚕丛及鱼凫，开国何茫然！<br>
+              尔来四万八千岁，不与秦塞通人烟。</p>
+            </blockquote>
+          </section>
+        </div>
+      </article>
+      
+      <!-- Poem 3 -->
+      <article class="poem-card" id="poem-2">
+        <header class="poem-header">
+          <h3>Drinking Alone Under the Moon</h3>
+          <img src="Drinking Alone Under the Moon.png" alt="Drinking Alone Under the Moon" class="poem-image">
+        </header>
+        <div class="poem-content">
+          <p class="poem-intro"><span class="highlighted">Introduction:</span> This poem was written about the third year of Emperor Xuanzong's Tianbao (744), when Li Bai was in Chang'an, at a time when he was frustrated in officialdom.</p>
+          
+          <section class="poem-text">
+            <h4>English Translation:</h4>
+            <blockquote class="poem-translation">
+              <p>Amidst the blooms, a jug of wine I pour,<br>
+              A solitary drinker, forever more.<br>
+              With cup aloft, I toast the silvery moon,<br>
+              And with my shadow, a trio, we swoon.</p>
+            </blockquote>
+            
+            <h4>Original Chinese:</h4>
+            <blockquote class="poem-original">
+              <p class="chinese-text">月下獨酌</p>
+              <p class="chinese-text">花間一壺酒，獨酌無相親。<br>
+              舉杯邀明月，對影成三人。</p>
+            </blockquote>
+          </section>
+        </div>
+      </article>
+
+      <!-- Poem 4 -->
+      <article class="poem-card" id="poem-3">
+        <header class="poem-header">
+          <h3>Bring in the Wine</h3>
+          <img src="Bring in the Wine.jpg" alt="Bring in the Wine" class="poem-image">
+        </header>
+        <div class="poem-content">
+          <p class="poem-intro"><span class="highlighted">Introduction:</span> This is one of Li Bai's most famous poems about wine and the celebration of life. Written during his later years, it reflects his Taoist philosophy of living in the moment.</p>
+          
+          <section class="poem-text">
+            <h4>English Translation:</h4>
+            <blockquote class="poem-translation">
+              <p>See how the Yellow River's waters move out of heaven,<br>
+              Entering the ocean, never to return.<br>
+              See how lovely locks in bright mirrors in high chambers,<br>
+              Though silken-black at morning, have changed by night to snow.</p>
+            </blockquote>
+            
+            <h4>Original Chinese:</h4>
+            <blockquote class="poem-original">
+              <p class="chinese-text">将进酒</p>
+              <p class="chinese-text">君不见黄河之水天上来，奔流到海不复回。<br>
+              君不见高堂明镜悲白发，朝如青丝暮成雪。</p>
+            </blockquote>
+          </section>
+        </div>
+      </article>
+
+      <!-- Poem 5 -->
+      <article class="poem-card" id="poem-4">
+        <header class="poem-header">
+          <h3>Farewell to a Friend</h3>
+          <img src="Farewell to a Friend.jpg" alt="Farewell to a Friend" class="poem-image">
+        </header>
+        <div class="poem-content">
+          <p class="poem-intro"><span class="highlighted">Introduction:</span> This poem was written when Li Bai was saying goodbye to his friend Meng Haoran, who was leaving for Yangzhou.</p>
+          
+          <section class="poem-text">
+            <h4>English Translation:</h4>
+            <blockquote class="poem-translation">
+              <p>At Yellow Crane Tower in the west<br>
+              My old friend says farewell;<br>
+              In the mist and flowers of spring<br>
+              He goes down to Yangzhou.</p>
+            </blockquote>
+            
+            <h4>Original Chinese:</h4>
+            <blockquote class="poem-original">
+              <p class="chinese-text">黄鹤楼送孟浩然之广陵</p>
+              <p class="chinese-text">故人西辞黄鹤楼，<br>
+              烟花三月下扬州。</p>
+            </blockquote>
+          </section>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Scroll to top button -->
+  <button id="scroll-top" class="btn" title="Go to top">↑</button>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Chinese Poets. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Scroll to top button functionality
+    const scrollBtn = document.getElementById('scroll-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    });
+
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Poem tabs functionality
+    function showPoem(index) {
+      // Hide all poems
+      document.querySelectorAll('.poem-card').forEach(card => {
+        card.classList.remove('active');
+      });
+      // Show selected poem
+      document.getElementById(`poem-${index}`).classList.add('active');
+      
+      // Update active buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.currentTarget.classList.add('active');
+    }
+
+    // Image hover effects
+    document.querySelectorAll('.poem-image').forEach(img => {
+      img.addEventListener('mouseenter', () => {
+        img.style.transform = 'scale(1.03)';
+      });
+      img.addEventListener('mouseleave', () => {
+        img.style.transform = 'scale(1)';
+      });
+    });
+
+    // Main CTA button animation
+    const mainCta = document.getElementById('main-cta');
+    if (mainCta) {
+      setInterval(() => {
+        mainCta.style.animation = 'pulse 2s';
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
